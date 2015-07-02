@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<!-- saved from url=(0040)http://getbootstrap.com/examples/signin/ -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    
+    <title>Signin Template for Bootstrap</title>
+    
+    <meta name="description" content="My Parse App">
+    
+    <meta name="viewport" content="width=device-width">
+
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <!-- Bootstrap core CSS -->
+    <link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="http://getbootstrap.com/examples/signin/signin.css" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="./Signin Template for Bootstrap_files/ie-emulation-modes-warning.js"></script>
+
+    <script type="text/javascript" src="js/key.js"></script>
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <script>
+
+    //### Step 3 : 註冊
+    $(document).on('submit','#signUpForm',function(e){
+      e.preventDefault();  // 避免 form submit 完成後 轉址
+      var user = new Parse.User();
+      user.set("username", $('#username').val());
+      user.set("email",    $('#email').val());
+      user.set("password", $('#password').val());
+      // username ,email , passwod 一定都要有
+      user.set("phone",    $('#phone').val());
+
+      user.signUp(null,{
+        success : function(user){     // 註冊成功後會執行的 callback
+          console.log(user);
+          alert("使用者註冊成功");
+          window.location="personal.html" ;
+        },
+        error : function(course,error){ // 註冊失敗後會執行的 callback
+          console.log(error) ;
+          alert(error.message);
+        }
+      });//endof signUp
+
+    });  //endof signUpBtn onSubmit
+    //## Step 3 end
+    
+  </script>
+  </head>
+
+  <body>
+
+    <div class="container">
+
+    <div class="col-md-12 col-md-offset-4">
+
+      <form id="signUpForm" class="col-md-4 control-label" text-align:center>
+        <h2 class="form-signin-heading">Please sign in</h2>
+        
+
+
+        <label for="username" class="sr-only">Username</label>
+        <input id="username" name="username" type="text" placeholder="username" class="form-control input-md" required="">
+
+        <label for="email" class="sr-only">Email</label>
+        <input id="email" name="email" type="text" placeholder="email" class="form-control input-md" required="">
+
+        
+        <label for="phone" class="sr-only">Phone</label>
+        <input id="phone" name="phone" type="text" placeholder="phone" class="form-control input-md" required="">
+
+        <label for="password" class="sr-only">Password</label>
+        <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
+
+        
+
+        <div class="checkbox">
+          <label>
+            <input type="checkbox" value="remember-me"> Remember me
+          </label>
+
+        </div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+
+      </form>
+    
+      </div>
+    </div> <!-- /container -->
+
+
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="./Signin Template for Bootstrap_files/ie10-viewport-bug-workaround.js"></script>
+  
+
+</body><div></div></html>
