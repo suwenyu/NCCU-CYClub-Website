@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>個人頁面</title>
+
+  <!-- jquery -->
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+  <!-- Parse 必要的函式庫 -->
+  <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+
+  <!-- 網頁樣式 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+  <!-- <link rel="stylesheet" href="css/css.css"> -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+  <!-- 引入初始化 Parse 的 js 檔案  key.js -->
+  <script type="text/javascript" src="js/key.js"></script>
+
+
+  <script>
+    $(document).ready(function(){
+      console.log(Parse.User.current());
+      if (Parse.User.current()){
+        $("#name").text(Parse.User.current().get("username"));
+      }
+    //
+    //   // Practice 2  這裏要補充兩行不見的程式碼
+    
+    var Comment = Parse.Object.extend("Comment") ;
+    var queryComments = new Parse.Query (Comment) ;
+    //   // Practice 3  要將關聯的資料也一起抓下來
+    //
+    //   // Practice 4  只顯示目前使用者的留言
+    //
+    //   // Practice 6  只抓取有圖片的留言
+      
+    
+      queryComments.include("writer") ;
+      queryComments.equalTo("writer",Parse.User.current());
+      queryComments.find({
+        success : function(arrayOfQueriedObjects){
+          console.log (arrayOfQueriedObjects);
+    
+          for (var i = 0 ; i < arrayOfQueriedObjects.length  ; i++){
+            comment = arrayOfQueriedObjects[i] ;
+            if ($("#fileInput")[0].files.length > 0)
+            {
+              queryComments.exists("img");
+              $("#comments").append(
+              "<blockquote>"+
+                comment.get("writer").get("username") + ": " +comment.get("message")+
+                "<br><img src='"+ comment.get("img").url()+"' height='100px'>"+  // Practice 6
+              "</blockquote>");
+            }
+            else{
+              
+              $("#comments").append(
+              "<blockquote>"+
+                comment.get("writer").get("username") + ": " +comment.get("message")+
+                "</blockquote>");
+            }
+            
+          }
+        },
+        error : function(errorObject){
+          alert(errorObject.message) ;
+        }
+      });
+    });
+
+    $(document).on('submit','#commentForm',function(eventObject){
+      eventObject.preventDefault();
+
+      var Comment = Parse.Object.extend("Comment") ;
+      var comment = new Comment();
+
+      comment.set("message",$("#comment").val());
+      comment.set("writer" , Parse.User.current());
+      // Practice 1 記錄發文的使用者
+
+      // Practice 5 儲存圖片
+      
+
+      if ($("#fileInput")[0].files.length > 0) {
+         var file = $("#fileInput")[0].files[0];
+         var name = "photo";
+         var parseImg = new Parse.File(name, file);
+         comment.set("img",parseImg);
+         parseImg.save({
+         success : function (savedImg){
+         alert(savedImg.url());
+         },
+         error : function (saveingImg , errorObject){
+         alert(errorObject.message) ;
+         }
+         });
+        }
+        
+        
+      
+      comment.save({
+        success : function(savedParseObject){
+          alert("留言成功");
+          window.location.reload();
+        },
+        error : function (errorObject){
+          console.log(errorObject);
+          alert(errorObject.message);
+        }
+      });
+    });
+
+  </script>
+
+</head>
+
+
+<body>
+<!-- navbar  -->
+<nav class="navbar navbar-inverse navbar-fixed-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">NCCYCY_TALK</a>
+    </div>
+    <div>
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="personal.html">Home</a></li>
+        <li><a href="conference.html">Conference</a></li>
+        <li><a href="#">Talking</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<!-- navbar end -->
+
+  <br>
+  <br>
+  <br>
+  <div  class="container">
+    <div class="row">
+
+      你好<span id="name"></span>
+    </div>
+
+    <div class="row">
+      <h2>哈拉哈拉芭芭拉板</h2>
+    </div>
+
+      <!-- 這一部分要大家去 form builder 做 -->
+      <!-- http://bootsnipp.com/forms?version=3 -->
+      
+      <blockquote>
+          <p>電腦小姐：你今天說話了嗎？！</p>
+      </blockquote>
+
+      <div id="comments">
+      </div>
+      
+        <blockquote>
+        <form id="commentForm" class="form-horizontal">
+          <div class="form-group">
+            <div class="col-md-4">
+              <textarea class="form-control" placeholder="請輸入留言" id="comment" name="comment"></textarea>
+            </div>
+          </div>
+          <!-- Practice 5 儲存圖片 -->
+          <div class="form-group">
+            <div class="col-md-4"><input type="file" id="fileInput"></div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-4"><button id="commentSubmit" name="commentSubmit" class="btn btn-primary">送出</button></div>
+          </div>
+        </form>
+      </blockquote>
+
+
+      
+
+
+  </div>
+</body>
+
+
+
+</html>
