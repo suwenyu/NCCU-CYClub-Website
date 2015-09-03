@@ -2,29 +2,77 @@
 <html>
 
   <head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
-    
     <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
     <link rel="stylesheet" href="main.css">
+    <link href="css/ihover.css" rel="stylesheet">
+
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/key.js"></script>
     
-  </head>
+
+
+    <title>NCCUCY</title>
+
+    <script>
+      $(document).on('submit','#logInForm',function(e){
+      Parse.User.logOut();
+      e.preventDefault();  // 避免 form submit 完成後 轉址
+      console.log ("login") ;
+      var username = $('#username').val() ;
+      var password = $('#password').val() ;
+
+
+      // 用 Parse.User.current() 判定使用者是否是登入的狀態，這裏還沒登入，會是 null
+      console.log("登入之前的 Parse.User.current()  : ", Parse.User.current()) ;
+
+      Parse.User.logIn( username , password , {
+        success: function(user) {
+          // 到 console 看看 Parse.User.current()  的東西
+          console.log("登入之後的 Parse.User.current()  : ",Parse.User.current()) ;
+          alert('登入成功') ;
+          window.location = 'nccucy_personal.html' ;
+        },
+        error: function(user,error) {
+          console.log(error) ;
+          alert(error.message);
+        }
+      });//endof login
+    });  //endof logInBtn onSubmit
+
+    </script>
+
+    </head>
 
   <body>
     <div class="nav">
       <div class="container">
         <ul class="pull-left">
           <li><a href="#"><i class="fa fa-university"></i> NCCUCY</a></li>
-          <li><a href="#"><i class="fa fa-file-text"></i> Conference</a></li>
-          <li><a href="#"><i class="fa fa-comments-o"></i> Talking</li>
+          <!-- <li><a href="#"><i class="fa fa-file-text"></i> Conference</a></li>
+          <li><a href="#"><i class="fa fa-comments-o"></i> Talking</li> -->
         </ul>
         <ul class="pull-right">
-          <li><a href="#"><i class="fa fa-user"></i> Sign Up</a></li>
-          <li><a href="#"><i class="fa fa-sign-in"></i> Log In</a></li>
+          <li><a href="signUp.html"><i class="fa fa-user"></i> Sign Up</a></li>
+          <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Log In</a></li>
         </ul>
       </div>
     </div>
-
+    
     <div class="jumbotron">
       <div class="container">
         <h1>A Home in NCCU.</h1>
@@ -33,36 +81,56 @@
       </div>
     </div> 
     
+
     <div class="neighborhood-guides">
       <div class="container">
         <h2><i class="fa fa-thumbs-o-up"></i> Many Actitvity</h2>
         <p>Being friendship associations, we hold the activities together to increase our emotion and learn each other.</p>
-        <div class="row">
-            <div class="col-md-4">
-                <div>
-                    <h4>Welcome in Tou-liu Senior High School</h4>
-                </div>     
-                <div class="thumbnail">    
-                    <img src="http://goo.gl/pDZRFY" >
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-            <h4>Summer Camp at Sikou Elementary School</h4>
-                <div class="thumbnail">
-                    <img src="http://goo.gl/Jp22g6" >
-                </div>
-            </div>
-            
-            <div class="col-md-4">
-            <h4>We are NCCUCY</h4>
-                <div class="thumbnail">
-                    <img src="http://goo.gl/haieXV" >
-                </div>
-            </div>
-            
+
+
+      <!-- From top and bottom-->
+      <div class="row">
+        <div class="col-sm-4">
+       
+          <!-- normal -->
+          <div class="ih-item square effect6 from_top_and_bottom"><a href="#">
+              <div class="img"><img src="http://goo.gl/pDZRFY" alt="img"></div>
+              <div class="info">
+                <h3>Welcome</h3>
+                <p> at Tou-liu Senior High School</p>
+              </div></a></div>
+          <!-- end normal -->
+       
+        </div>
+        <div class="col-sm-4">
+       
+          <!-- colored -->
+          <div class="ih-item square colored effect6 from_top_and_bottom"><a href="#">
+              <div class="img"><img src="http://goo.gl/Jp22g6" alt="img"></div>
+              <div class="info">
+                <h3>Summer Camp</h3>
+                <p>at Sikou Elementary School</p>
+              </div></a></div>
+          <!-- end colored -->
+       
+        </div>
+        <div class="col-sm-4">
+       
+          <!-- colored -->
+          <div class="ih-item square colored effect6 from_top_and_bottom"><a href="#">
+              <div class="img"><img src="http://goo.gl/haieXV" alt="img"></div>
+              <div class="info">
+                <h3>We are NCCUCY</h3>
+                <p></p>
+              </div></a></div>
+          <!-- end colored -->
+       
         </div>
       </div>
+      <!-- end From top and bottom-->
+
+
+    </div>
     </div>
 
     <div class="learn-more">
@@ -88,5 +156,52 @@
       </div>
     </div>
   </div>
+
+          <div class="modal fade" id="myModal" role="dialog">
+            <div class="modal-dialog">
+            
+              <!-- Modal content-->
+              <div class="modal-content">
+              
+                <div class="modal-header" style="padding:35px 50px;">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4><span class="glyphicon glyphicon-lock"></span> Login</h4>
+                </div>
+                <div class="modal-body" style="padding:40px 50px;">
+                  <form role="form" id="logInForm" class="form-horizontal">
+                    <div class="form-group">
+                      <label for="username"><span class="glyphicon glyphicon-user"></span> Username</label>
+                      <input id="username" name="username" type="text" placeholder="username" class="form-control input-md" required="">
+                    </div>
+                    <div class="form-group">
+                      <label for="password"><span class="glyphicon glyphicon-eye-open"></span> Password</label>
+                      <input id="password" name="password" type="password" placeholder="password" class="form-control input-md" required="">
+                    </div>
+                    <div class="checkbox">
+                      <label><input type="checkbox" value="" checked>Remember me</label>
+                    </div>
+                      <label class="col-md-4 control-label" for="signUpBtn"></label>
+                      <button id="signUpBtn" name="signUpBtn" class="btn btn-primary btn-block"><span class="glyphicon glyphicon-off"></span> Login</button>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button type="submit" class="btn btn-danger btn-default pull-left" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cancel</button>
+                  <p>Not a member? <a href="signUp.html">Sign Up</a></p>
+                  <p>Forgot <a href="#">Password?</a></p>
+                </div>
+              </div>
+              
+            </div>
+          </div> 
+        <!--Modal-->
+    <script>
+      $(document).ready(function(){
+        $("#myBtn").click(function(){
+            $("#myModal").modal();
+        });
+      });
+    </script>
+  
   </body>
+
 </html>
