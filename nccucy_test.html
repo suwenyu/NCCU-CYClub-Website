@@ -104,9 +104,7 @@
                       IfNotLoggedIn.style.display="inline-block";
                       
                       FB.api('/me/picture', function (response) {
-                      
-                      $('.nav .pull-right').empty();
-                      $('.nav .pull-right').prepend("<li><a href=\"#\" id=\"LogOut\"><i class=\"fa fa-sign-out\"></i> Logout</a></li>");
+
                       $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
 
                       $('.nav .pull-left').empty();
@@ -172,6 +170,20 @@
                 IfNotLoggedIn.style.display="none";
               }
       }
+      $(document).ready(function(){
+        var currentUser = Parse.User.current();
+        if(currentUser)
+        {
+          $('.LogIn').hide();
+          $('.LogOut').show();
+        }
+        else
+        {
+          $('.LogIn').show();
+          $('.LogOut').hide();
+        }
+      });
+
       function logout(){
          Parse.User.logOut();
          FB.logout(function(response) {
@@ -199,22 +211,23 @@
         </ul>
         <ul class="pull-right">
           <li><a href="#" id="LogIn"><i class="fa fa-sign-in"></i> FaceBook Login</a></li>
-          <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
-          <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li>
+
           <!-- <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
           <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li> -->
-
-          <li class="dropdown">
+          <!-- <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
+          <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li> -->
+          <li><a href="#" id="LogOut"><i class="fa fa-sign-out"></i> Logout</a></li>
+          <!-- <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="manage" href= "">
                 </a>
                 <ul class="dropdown-menu" role="menu">
-                <!-- <li><a href="profile.html">Profile</a></li> -->
+                <li><a href="profile.html">Profile</a></li>
                 <li><a href="NCCUCY_Conderence.html"> Conference</a></li>
                 <li><a href="talking.html"> Talking</a></li>
-                <li><a href="#" id="LogOut"><i class="fa fa-sign-out"></i> Logout</a></li>
+                
                 
                 </ul>
-          </li>
+          </li> -->
         
         </ul>
       </div>
