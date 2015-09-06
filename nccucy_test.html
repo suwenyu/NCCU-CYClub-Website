@@ -191,6 +191,11 @@
                 IfLoggedIn.style.display="inline-block";
                 var IfNotLoggedIn=document.getElementById("LogOut");
                 IfNotLoggedIn.style.display="none";
+                var Confer=document.getElementById('Confer');
+               Confer.style.display="none";
+               var Talk=document.getElementById('Talk');
+               Talk.style.display="none";
+
               }
       }
       $(document).ready(function(){
@@ -198,17 +203,17 @@
         var currentUser = Parse.User.current();
         if(currentUser)
         {
-          $('.LogIn').hide();
-          $('.LogOut').show();
+          $('#LogIn').hide();
+          $('#LogOut').show();
           $('#Confer').show();
           $('#Talk').show();
         }
         else
         {
-          $('.LogIn').show();
-          $('.LogOut').hide();
-          $('.Confer').hide();
-          $('.Talk').hide();
+          $('#LogIn').show();
+          $('#LogOut').hide();
+          $('#Confer').hide();
+          $('#Talk').hide();
         }
       });
 
