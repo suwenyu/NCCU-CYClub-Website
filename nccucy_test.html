@@ -43,6 +43,10 @@
               IfLoggedInDiv.style.display="inline-block";
               var IfNotLoggedInDiv=document.getElementById("LogIn");
               IfNotLoggedInDiv.style.display="none";
+              var Confer=document.getElementById('Confer');
+              Confer.style.display="inline-block";
+              var Talk=document.getElementById('Talk');
+              Talk.style.display="inline-block";
               // get access token
               ACCESS_TOKEN=response.authResponse.accessToken;
               //console.log('ACCESS_TOKEN: '+ACCESS_TOKEN);
@@ -58,6 +62,10 @@
               IfLoggedInDiv.style.display="none";
               var IfNotLoggedInDiv=document.getElementById("LogIn");
               IfNotLoggedInDiv.style.display="inline-block";
+              var Confer=document.getElementById('Confer');
+              Confer.style.display="none";
+              var Talk=document.getElementById('Talk');
+              Talk.style.display="none";
               FB.logout(function(response){
                   location.reload();  // refresh
             });
