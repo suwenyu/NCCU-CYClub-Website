@@ -15,7 +15,7 @@
   <script>
       
       Parse.initialize("APD98f2DF3dIktwpDosdCbOJbXQTmXjrVqgpO3iC", "KdLyOuwhnkiW7cxbFrVzjZRqRS8ic3LV47IA9l1O");
-      
+
        window.fbAsyncInit = function() {
         Parse.FacebookUtils.init({ // this line replaces FB.init({
            appId      : '1586848154899930', // Facebook App ID
@@ -175,35 +175,14 @@
       //   locat.append(textvalue);
       //   alert(locat);
       // });
-     
-        function EasySearch(event){
-          event.preventDefault();
-          // var Exhibition = Parse.Object.extend("Exhibition");
-          // var query = new Parse.Query(Exhibition);
-          var key=$('#easysearch').val();
-          key=decodeURI(key);
-          console.log(key);
-          var link = 'searchbyname.html?text='+key;
-          window.location = link;
-        }
+      
     </script>
 </head>
 
 <body>
-    <div id="fb-root"></div>
     <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                  <span class="sr-only">Toggle navigation</span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                  <span class="icon-bar"></span>
-                </button>
-
-            </div>
-
 
             <div id="navbar" class="navbar-collapse collapse">
 
