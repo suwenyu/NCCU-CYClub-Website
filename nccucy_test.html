@@ -1,17 +1,27 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>NCCUCY</title>
   <meta charset="utf-8">
-  <title>XLanguage</title>
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap-theme.min.css">
-  <link href="//netdna.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-  <script src="http://code.jquery.com/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
-  <script src="//www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
+    <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
+    <link rel="stylesheet" href="main.css">
+    <link href="css/ihover.css" rel="stylesheet">
+
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
+    <script type="text/javascript" src="js/key.js"></script>
+    
   <script>
       
       Parse.initialize("APD98f2DF3dIktwpDosdCbOJbXQTmXjrVqgpO3iC", "KdLyOuwhnkiW7cxbFrVzjZRqRS8ic3LV47IA9l1O");
@@ -180,21 +190,50 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="nav">
+      <div class="container">
+        <ul class="pull-left">
+          <li><a href="#"><i class="fa fa-university"></i> NCCUCY</a></li>
+          <!-- <li><a href="#"><i class="fa fa-file-text"></i> Conference</a></li>
+          <li><a href="#"><i class="fa fa-comments-o"></i> Talking</li> -->
+        </ul>
+        <ul class="pull-right">
+          <li><a href="#" id="LogIn"><i class="fa fa-sign-in"></i> FaceBook</a></li>
+          <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
+          <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li>
+          <li class="dropdown">
+
+                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="manage" href= "">
+                </a>
+                <ul class="dropdown-menu" role="menu">
+                <li><a href="profile.html">Profile</a></li>
+                <li> <a  title="Login" id="LogOut"><div class="orange ui buttons">
+                <div class="ui button">Logout</div></div></a></li>
+                </ul>
+              
+              </li>
+        </ul>
+      </div>
+    </div>
+    
+ <!--    <nav class="navbar navbar-default navbar-fixed-top">
         <div class="navbar-inner">
           <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+
+            </div>
+
 
             <div id="navbar" class="navbar-collapse collapse">
 
               <ul class="nav pull-right">
-
-
-              <!--<li><a> <span data-toggle="modal" data-target="#regist-modal">註冊</span></a></li>-->
-                
-              <!--
-              <li><fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
-              </fb:login-button></li>
-                -->
+              
               <div class="btn-group">
               <a title="Login" id="LogIn"><div class="orange ui buttons">
               <div class="ui button" id="profileBtn">Login</div></div></a>
@@ -221,7 +260,7 @@
 
           </div>
          </div>
-        </nav>
+        </nav> -->
 
 </body>
 </html>
