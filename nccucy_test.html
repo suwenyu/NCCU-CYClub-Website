@@ -104,7 +104,7 @@
                       IfNotLoggedIn.style.display="inline-block";
                       
                       FB.api('/me/picture', function (response) {
-                      $('.nav-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
+                      $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
                       // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
                        });
                       var Manage=document.getElementById("manage");
