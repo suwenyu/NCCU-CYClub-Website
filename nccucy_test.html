@@ -104,7 +104,8 @@
                       IfNotLoggedIn.style.display="inline-block";
                       
                       FB.api('/me/picture', function (response) {
-                      $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
+                      $('.nav-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
+                      // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
                        });
                       var Manage=document.getElementById("manage");
                       Manage.style.display="inline-block";
@@ -200,7 +201,7 @@
                 <!-- <li><a href="profile.html">Profile</a></li> -->
                 <li><a href="NCCUCY_Conderence.html"><i class="fa fa-file-text"></i> Conference</a></li>
                 <li><a href="talking.html"><i class="fa fa-comments-o"></i> Talking</a></li>
-                <li><a title="Logout" id="LogOut"><i class="fa fa-sign-out"></i> Logout</a></li>
+                <li><a href="#" id="LogOut"><i class="fa fa-sign-out"></i> Logout</a></li>
                 </ul>
           </li>
         
