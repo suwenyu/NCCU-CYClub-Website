@@ -173,6 +173,7 @@
       function testAPI() {
         console.log('Welcome!  Fetching your information.... ');
         FB.api('/me/picture', function (response) {
+        $('#conference').html("<a href="NCCUCY_Conderence.html"></a>");
         $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
         });
       }
@@ -201,11 +202,10 @@
           <li><a href="#" id="LogIn"><i class="fa fa-sign-in"></i> FaceBook Login</a></li>
           <!-- <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
           <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li> -->
-          
+          <li id="conference">Haha</li>
           <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="manage" href= "">
                 </a>
-                <li>Hi, can I see you?</li>
                 <ul class="dropdown-menu" role="menu">
                 <!-- <li><a href="profile.html">Profile</a></li> -->
                 <li><a title="Logout" id="LogOut"> Logout</a></li>
