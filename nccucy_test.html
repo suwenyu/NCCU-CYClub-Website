@@ -105,6 +105,8 @@
                       
                       FB.api('/me/picture', function (response) {
                       $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
+                      $('.nav .pull-left').prepend("<li><a href=\"#\" Conference></a></li>");
+                      
                       // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
                        });
                       var Manage=document.getElementById("manage");
