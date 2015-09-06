@@ -102,34 +102,41 @@
             } else {
               alert("透過臉書登入成功");
             }
-          //切換至預先寫好登入後的介面
-              // FB.getLoginStatus(function(response) {
-              //     if (response.status == "connected") {
-              //         var IfLoggedIn=document.getElementById("LogIn");
-              //         IfLoggedIn.style.display="none";
-              //         console.log('login display none');
-              //         var IfNotLoggedIn=document.getElementById("LogOut");
-              //         IfNotLoggedIn.style.display="inline-block";
-              //         va
+          // 切換至預先寫好登入後的介面
+              FB.getLoginStatus(function(response) {
+                  if (response.status == "connected") {
+                      var IfLoggedIn=document.getElementById("LogIn");
+                      IfLoggedIn.style.display="none";
+                      console.log('login display none');
+                      var IfNotLoggedIn=document.getElementById("LogOut");
+                      IfNotLoggedIn.style.display="inline-block";
+                      var Confer=document.getElementById('Confer');
+                      Confer.style.display="inline-block";
+                      var Talk=document.getElementById('Talk');
+                      Talk.style.display="inline-block";
 
                       
-              //         FB.api('/me/picture', function (response) {
+                      FB.api('/me/picture', function (response) {
 
-              //         $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
+                      $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
 
-              //         // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
-              //          });
-              //         var Manage=document.getElementById("manage");
-              //         Manage.style.display="inline-block";
-              //         console.log('picture display now');
-              //       } else {
-              //         var IfLoggedIn=document.getElementById("LogIn");
-              //         IfLoggedIn.style.display="inline-block";
-              //         var IfNotLoggedIn=document.getElementById("LogOut");
-              //         IfNotLoggedIn.style.display="none";
-              //         console.log('User cancelled login or did not fully authorize.');
-              //       }
-              //  }); 
+                      // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
+                       });
+                      var Manage=document.getElementById("manage");
+                      Manage.style.display="inline-block";
+                      console.log('picture display now');
+                    } else {
+                      var IfLoggedIn=document.getElementById("LogIn");
+                      IfLoggedIn.style.display="inline-block";
+                      var IfNotLoggedIn=document.getElementById("LogOut");
+                      IfNotLoggedIn.style.display="none";
+                      var Confer=document.getElementById('Confer');
+                      Confer.style.display="none";
+                      var Talk=document.getElementById('Talk');
+                      Talk.style.display="none";
+                      console.log('User cancelled login or did not fully authorize.');
+                    }
+               }); 
                },
               error: function(user, error) {
                 alert("使用者取消登入或沒有授權");
@@ -153,6 +160,10 @@
                 Manage.style.display="inline-block";
                 var IfLoggedIn=document.getElementById('Confer');
                 IfLoggedIn.style.display="inline-block";
+                var Confer=document.getElementById('Confer');
+                Confer.style.display="inline-block";
+                var Talk=document.getElementById('Talk');
+                Talk.style.display="inline-block";
                 /*
                 var user_info = document.getElementById("profile_img");
                 user_info.style.display="block";*/
@@ -163,7 +174,11 @@
                IfLoggedIn.style.display="inline-block";
                var IfNotLoggedIn=document.getElementById("LogOut");
                IfNotLoggedIn.style.display="none";
-               
+               var Confer=document.getElementById('Confer');
+               Confer.style.display="none";
+               var Talk=document.getElementById('Talk');
+               Talk.style.display="none";
+
                // The person is logged into Facebook, but not your app.
                // document.getElementById('status').innerHTML = 'Please log ' +
                //  'into this app.';
