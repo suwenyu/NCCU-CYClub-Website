@@ -168,6 +168,12 @@
          });
          location.reload();
       }
+      function testAPI() {
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me/picture', function (response) {
+        $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 />");          
+        });
+      }
     </script>
 
 
@@ -213,6 +219,7 @@
         </ul>
         <ul class="pull-right">
           <li><button id="LogIn" class="btn btn-primary" type="submit">FB登入</button></li>
+          <li><button id="LogOut" class="btn btn-primary" type="submit">FBlogout</button></li>
           <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
           <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li>
         </ul>
