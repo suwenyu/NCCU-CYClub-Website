@@ -104,13 +104,14 @@
                       IfNotLoggedIn.style.display="inline-block";
                       
                       FB.api('/me/picture', function (response) {
-                      $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
+                      
                       $('.nav .pull-right').prepend("<li><a href=\"#\" id=\"LogOut\"><i class=\"fa fa-sign-out\"></i> Logout</a></li>");
-                      $('.nav .pull-left').empty();
-                      $('.nav .pull-left').prepend("<li><a href=\"nccucy.html\"> NCCUCY</a></li>");
-                      $('.nav .pull-left').prepend("<li><a href=\"NCCUCY_Conderence\"> Conference</a></li>");
-                      $('.nav .pull-left').prepend("<li><a href=\"taking.html\"> Talking</a></li>");
+                      $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
 
+                      $('.nav .pull-left').empty();
+                      $('.nav .pull-left').prepend("<li><a href=\"taking.html\"><i class=\"fa fa-comments-o\"></i> Talking</a></li>");
+                      $('.nav .pull-left').prepend("<li><a href=\"NCCUCY_Conderence\"><i class=\"fa fa-file-text\"></i> Conference</a></li>");
+                      $('.nav .pull-left').prepend("<li><a href=\"nccucy.html\"><i class=\"fa fa-university\"></i> NCCUCY</a></li>");
                       // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
                        });
                       var Manage=document.getElementById("manage");
@@ -197,21 +198,11 @@
         </ul>
         <ul class="pull-right">
           <li><a href="#" id="LogIn"><i class="fa fa-sign-in"></i> FaceBook Login</a></li>
+          <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
+          <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li>
           <!-- <li><a href="signUp.html"><i class="fa fa-user"></i> Guest</a></li>
           <li><a href="#" id="myBtn"><i class="fa fa-sign-in"></i> Member</a></li> -->
 
-          <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" id="manage" href= "">
-                </a>
-                <ul class="dropdown-menu" role="menu">
-                <!-- <li><a href="profile.html">Profile</a></li> -->
-                <li><a href="NCCUCY_Conderence.html"><i class="fa fa-file-text"></i> Conference</a></li>
-                <li><a href="talking.html"><i class="fa fa-comments-o"></i> Talking</a></li>
-                <li><a href="#" id="LogOut"><i class="fa fa-sign-out"></i> Logout</a></li>
-                
-                </ul>
-          </li>
-        
         </ul>
       </div>
     </div>
