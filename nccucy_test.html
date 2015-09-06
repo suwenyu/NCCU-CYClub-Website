@@ -105,6 +105,7 @@
                       
                       FB.api('/me/picture', function (response) {
                       
+                      $('.nav .pull-right').empty();
                       $('.nav .pull-right').prepend("<li><a href=\"#\" id=\"LogOut\"><i class=\"fa fa-sign-out\"></i> Logout</a></li>");
                       $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
 
