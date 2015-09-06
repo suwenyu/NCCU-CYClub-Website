@@ -115,7 +115,7 @@
                       
                       FB.api('/me/picture', function (response) {
 
-                      $('.nav navbar-nav navbar-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
+                      $('.nav navbar-nav').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
 
                       // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
                        });
