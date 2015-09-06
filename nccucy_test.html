@@ -105,7 +105,11 @@
                       
                       FB.api('/me/picture', function (response) {
                       $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 / >");
-                      $('.nav .pull-left').prepend("<li><a href=\"#\"> Conference></a></li>");
+                      $('.nav .pull-right').prepend("<li><a href=\"#\" id=\"LogOut\"><i class=\"fa fa-sign-out\"></i> Logout</a></li>");
+                      $('.nav .pull-left').empty();
+                      $('.nav .pull-left').prepend("<li><a href=\"nccucy.html\"> NCCUCY</a></li>");
+                      $('.nav .pull-left').prepend("<li><a href=\"NCCUCY_Conderence\"> Conference</a></li>");
+                      $('.nav .pull-left').prepend("<li><a href=\"taking.html\"> Talking</a></li>");
 
                       // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
                        });
@@ -203,7 +207,7 @@
                 <!-- <li><a href="profile.html">Profile</a></li> -->
                 <li><a href="NCCUCY_Conderence.html"><i class="fa fa-file-text"></i> Conference</a></li>
                 <li><a href="talking.html"><i class="fa fa-comments-o"></i> Talking</a></li>
-                <li><a href="#" id="LogOut"><i class="fa fa-sign-out"></i> Logout</a></li>
+                
                 </ul>
           </li>
         
