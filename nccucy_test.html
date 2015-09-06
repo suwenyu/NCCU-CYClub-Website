@@ -102,7 +102,7 @@
               //         console.log('login display none');
               //         var IfNotLoggedIn=document.getElementById("LogOut");
               //         IfNotLoggedIn.style.display="inline-block";
-
+              //         va
 
                       
               //         FB.api('/me/picture', function (response) {
@@ -122,8 +122,7 @@
               //         console.log('User cancelled login or did not fully authorize.');
               //       }
               //  }); 
-              // }
-              ,
+              // },
               error: function(user, error) {
                 alert("使用者取消登入或沒有授權");
               }
@@ -176,17 +175,17 @@
         var currentUser = Parse.User.current();
         if(currentUser)
         {
-          $('#LogIn').hide();
-          $('#LogOut').show();
+          $('.LogIn').hide();
+          $('.LogOut').show();
           $('#Confer').show();
           $('#Talk').show();
         }
         else
         {
-          $('#LogIn').show();
-          $('#LogOut').hide();
-          $('#Confer').hide();
-          $('#Talk').hide();
+          $('.LogIn').show();
+          $('.LogOut').hide();
+          $('.Confer').hide();
+          $('.Talk').hide();
         }
       });
 
