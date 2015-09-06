@@ -107,10 +107,6 @@
 
                       $('.nav .pull-right').prepend("<img src = " + response.data.url + " crossorigin = \"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/ >");
 
-                      $('.nav .pull-left').empty();
-                      $('.nav .pull-left').prepend("<li><a href=\"taking.html\"><i class=\"fa fa-comments-o\"></i> Talking</a></li>");
-                      $('.nav .pull-left').prepend("<li><a href=\"NCCUCY_Conderence\"><i class=\"fa fa-file-text\"></i> Conference</a></li>");
-                      $('.nav .pull-left').prepend("<li><a href=\"nccucy.html\"><i class=\"fa fa-university\"></i> NCCUCY</a></li>");
                       // $('#manage').html("<img src="+response.data.url+" crossorigin=\"anonymous\" id=preview1 class=\"img-circle\" alt=\"Cinque Terre\" width=\"40\" height=\"40\"/>");
                        });
                       var Manage=document.getElementById("manage");
@@ -171,16 +167,82 @@
               }
       }
       $(document).ready(function(){
+        
+        window.fbAsyncInit = function() {
+        Parse.FacebookUtils.init({ // this line replaces FB.init({
+           appId      : '1586848154899930', // Facebook App ID
+           status     : true,  // check Facebook Login status
+           cookie     : true,  // enable cookies to allow Parse to access the session
+           xfbml      : true,  // initialize Facebook social plugins on the page
+           version    : 'v2.4' // point to the latest Facebook Graph API version
+        });
+        FB.getLoginStatus(function(response) {
+            statusChangeCallback(response);
+        });
+        FB.Event.subscribe('auth.login', function(response) {
+          if (response.status=="connected"){ // if logged in
+              var IfLoggedInDiv=document.getElementById("LogOut");
+              IfLoggedInDiv.style.display="inline-block";
+              var IfNotLoggedInDiv=document.getElementById("LogIn");
+              IfNotLoggedInDiv.style.display="none";
+              // get access token
+              ACCESS_TOKEN=response.authResponse.accessToken;
+              //console.log('ACCESS_TOKEN: '+ACCESS_TOKEN);
+              // get user id
+              userid=response.authResponse.userID;
+              console.log('userid: '+userid);
+          }
+        });
+            
+        FB.Event.subscribe('auth.logout', function(response) {
+          if (response.status!="connected"){ // if logged out
+              var IfLoggedInDiv=document.getElementById("LogOut");
+              IfLoggedInDiv.style.display="none";
+              var IfNotLoggedInDiv=document.getElementById("LogIn");
+              IfNotLoggedInDiv.style.display="inline-block";
+              FB.logout(function(response){
+                  location.reload();  // refresh
+            });
+          }
+        });
+          // Run code after the Facebook SDK is loaded.
+        };
+        (function(d, s, id){
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) {return;}
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/en_US/all.js";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+        $(document).on('click','#LogIn',function(e){
+            console.log('click the button!!!');
+            e.preventDefault();
+            fblogin();
+        });
+        $(document).on('click','#LogOut',function(e){
+          //  alert('You are logging out. Bye!');
+            var IfLoggedIn=document.getElementById("LogIn");
+            IfLoggedIn.style.display="inline-block";
+            var IfNotLoggedIn=document.getElementById("LogOut");
+            IfNotLoggedIn.style.display="none";
+            e.preventDefault();
+            logout();
+        });
+
         var currentUser = Parse.User.current();
         if(currentUser)
         {
           $('.LogIn').hide();
           $('.LogOut').show();
+          $('.conference').show();
+          $('.talking').show();
         }
         else
         {
           $('.LogIn').show();
           $('.LogOut').hide();
+          $('.conference').hide();
+          $('.talking').hide();
         }
       });
 
@@ -206,6 +268,8 @@
       <div class="container">
         <ul class="pull-left">
           <li><a href="#"><i class="fa fa-university"></i> NCCUCY</a></li>
+          <li><a href="NCCUCY_Conderence.html" id="conference"><i class="fa fa-file-text"></i> Conference</a></li>
+          <li><a href="#" id="talking"><i class="fa fa-comments-o"></i> Talking</a></li>
           <!-- <li><a href="#"><i class="fa fa-file-text"></i> Conference</a></li>
           <li><a href="#"><i class="fa fa-comments-o"></i> Talking</li> -->
         </ul>
