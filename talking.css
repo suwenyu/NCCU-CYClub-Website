@@ -1,0 +1,7 @@
+.jumbotron {
+  background-image:url("http://goo.gl/VyR9vc");
+  height: 500px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 30% 50%;
+}

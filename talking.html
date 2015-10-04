@@ -54,10 +54,11 @@
               $("#comments").append(
               "<blockquote>"+
                 comment.get("writer").get("username") + ": " +comment.get("message")+
-                "<br><img src='"+ comment.get("img").url()+"' height='100px'>"+  // Practice 6
+                "<br><img src="+ comment.get("img").url()+" height='100px'>"+  // Practice 6
               "</blockquote>");
             }
-            else{
+            else
+            {
               
               $("#comments").append(
               "<blockquote>"+

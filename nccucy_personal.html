@@ -11,10 +11,34 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/shift.css" rel="stylesheet">
 
+
+    
     <link rel="stylesheet" href="http://s3.amazonaws.com/codecademy-content/courses/ltp/css/bootstrap.css">
     <link rel="stylesheet" href="main.css">
-
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.4.2.min.js"></script>
     <script src="js/key.js"></script>
+    
+    <script type="text/javascript">
+
+    $(document).ready(function(){
+      /* 顯示登入者名稱，避免未登入者進入此頁面*/
+        var current_user = Parse.User.current();
+        if(!current_user){
+          alert("未登入，轉至登入頁面進行登入!");
+          window.location = 'nccucy.html';
+          return null;
+         }
+         
+        // var username = current_user.get('username');
+        // var userrole = current_user.get('role');
+        // $('#name').text(username);
+        // $('#role').text(userrole);
+          //提示 1 : 可用轉址的方式，讓未登入的使用者轉址到 logIn.html
+          //提示 2 : 請在 <span id="name" > 中顯示使用者名稱，在 <span id="role">中顯示角色
+          });
+    </script>
 
     <title>NCCUCY</title>
 
